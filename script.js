@@ -1,4 +1,4 @@
-// Game navigation (from your original home page)
+// Game navigation
 const playButton = document.getElementById("playButton");
 if (playButton) {
   playButton.addEventListener("click", () => {
