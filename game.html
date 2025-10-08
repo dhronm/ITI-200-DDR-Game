@@ -16,28 +16,35 @@
   </head>
 
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
-      <div class="container-fluid ps-4">
-        <a class="navbar-brand" href="#">
-          <img src="/img/logo.png" alt="Arrow Storm" width="75" height="75" />
-        </a>
-        <ul class="navbar-nav flex-row">
-          <li class="nav-item me-3">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item me-3">
-            <a class="nav-link active" href="#">Play</a>
-          </li>
-          <li class="nav-item me-3">
-            <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-          </li>
-        </ul>
-        <a href="#" class="text-white ms-auto">
-          <i class="bi bi-person-circle fs-3"></i>
-        </a>
-      </div>
-    </nav>
+        <!-- This is the navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid d-flex align-items-center justify-content-start ps-4">
+                <a class="navbar-brand" href="#">
+                <!-- logo is here -->
+                <img src="/img/logo.png" alt="Arrow Storm" width="75" height="75">
+                </a>
+                <!-- navbar options we can change these as needed for now
+                     I just made home, play, and Leaderboard -->
+                <ul class="navbar-nav flex-row">
+                <li class="nav-item me-3">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="game.html">Play</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link"  href="leaderboard.html">Leaderboard</a>
+                </li>
+                </ul>
+                <!-- Sign in logo im not sure how you do a pop up
+                     card for gettin user info for sign in but im sure
+                     we dont need that implemteded at the moment and 
+                     we can ask thiago -->
+                <a href="#" class="text-white ms-auto">
+                <i class="bi bi-person-circle fs-3"></i>
+                </a>
+            </div>
+        </nav>
 
     <!-- Game Section -->
     <div class="container text-center text-white mt-4">
