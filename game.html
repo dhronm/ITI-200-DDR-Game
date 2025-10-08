@@ -1,43 +1,79 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Home</title>
-        <meta name="viewport" content="width=device-width, inital-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="css/style.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Arrow Storm - Play</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-    </head>
-    <body>
-        <!-- This is the navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid d-flex align-items-center justify-content-start ps-4">
-                <a class="navbar-brand" href="#">
-                <!-- logo is here -->
-                <img src="/img/logo.png" alt="Arrow Storm" width="75" height="75">
-                </a>
-                <!-- navbar options we can change these as needed for now
-                     I just made home, play, and Leaderboard -->
-                <ul class="navbar-nav flex-row">
-                <li class="nav-item me-3">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item me-3">
-                    <a class="nav-link active" href="#">Play</a>
-                </li>
-                <li class="nav-item me-3">
-                    <a class="nav-link"  href="leaderboard.html">Leaderboard</a>
-                </li>
-                </ul>
-                <!-- Sign in logo im not sure how you do a pop up
-                     card for gettin user info for sign in but im sure
-                     we dont need that implemteded at the moment and 
-                     we can ask thiago -->
-                <a href="#" class="text-white ms-auto" data-bs-toggle="modal" data-bs-target="#signinModal">
-                <i class="bi bi-person-circle fs-3"></i>
-                </a>
-            </div>
-        </nav>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </body>
+  <body class="bg-dark text-white">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+      <div class="container-fluid ps-4">
+        <a class="navbar-brand" href="#">
+          <img src="/img/logo.png" alt="Arrow Storm" width="75" height="75" />
+        </a>
+        <ul class="navbar-nav flex-row">
+          <li class="nav-item me-3">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="nav-link active" href="#">Play</a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+          </li>
+        </ul>
+        <a href="#" class="text-white ms-auto">
+          <i class="bi bi-person-circle fs-3"></i>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Game Section -->
+    <div class="container text-center mt-4">
+      <h1 class="display-5 mb-3"> Arrow Storm </h1>
+
+      <div class="d-flex justify-content-center mb-3">
+        <div class="bg-secondary rounded p-3">
+          <div id="scoreboard" class="d-flex justify-content-around text-center">
+            <div>Score: <span id="score">0</span></div>
+            <div>Combo: <span id="combo">0</span></div>
+            <div>Misses: <span id="misses">0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Area -->
+      <div id="game" class="position-relative mx-auto border border-light rounded" style="width: 400px; height: 600px; display: flex; justify-content: space-between;">
+        <div class="lane" data-key="ArrowLeft" data-symbol="⬅️"><div class="hit-zone bg-light bg-opacity-25"></div></div>
+        <div class="lane" data-key="ArrowUp" data-symbol="⬆️"><div class="hit-zone bg-light bg-opacity-25"></div></div>
+        <div class="lane" data-key="ArrowDown" data-symbol="⬇️"><div class="hit-zone bg-light bg-opacity-25"></div></div>
+        <div class="lane" data-key="ArrowRight" data-symbol="➡️"><div class="hit-zone bg-light bg-opacity-25"></div></div>
+      </div>
+
+      <!-- Start and Stop buttons-->
+      <div class="mt-4">
+        <button class="btn btn-primary" id="startGameBtn">
+          <i class="bi bi-play-fill me-1"></i> Start Game
+        </button>
+        <button class="btn btn-danger" id="stopGameBtn">
+          <i class="bi bi-stop-fill me-1"></i> Stop Game
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
+
