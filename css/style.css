@@ -42,3 +42,14 @@ body {
   color: lime;
   text-shadow: 0 0 10px lime;
 }
+
+#signin-btn {
+  background: none;     
+  border: none;          
+  padding: 0;           
+  cursor: pointer;       
+}
+
+#signin-btn:hover i {
+  color: #bbb;          
+}
