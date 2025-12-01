@@ -14,6 +14,8 @@ let gameActive = false;
 let spawnInterval;
 let judgementTimeout;
 
+const MAX_MISSES = 10;
+
 // DOM elements
 const scoreDisplay = document.getElementById("score");
 const comboDisplay = document.getElementById("combo");
@@ -46,6 +48,10 @@ function spawnArrow(lane) {
         missDisplay.textContent = misses;
 
         showJudgement(0, "MISS", "miss");
+
+        if (misses >= MAX_MISSES) {
+          stopGame("miss-limit");
+        }
       }
     }
   }
@@ -70,20 +76,27 @@ function startGame() {
 }
 
 // Stop game function
-function stopGame() {
+function stopGame(reason = "stopped") {
+  if (!gameActive) return;         // prevent double-calls
   gameActive = false;
   clearInterval(spawnInterval);
 
   const name = window.playerName || "";
 
   if (name.trim() !== "") {
-    // AJAX POST to backend
     sendScoreToServer(name, score);
   } else {
     alert("You are not signed in, so your score will not be saved online.");
   }
 
-  alert(`Game Over!\nPlayer: ${name || "Guest"}\nScore: ${score}\nMisses: ${misses}`);
+  let extra = "";
+  if (reason === "miss-limit") {
+    extra = `\nReason: You reached the miss limit (${MAX_MISSES}).`;
+  }
+
+  alert(
+    `Game Over!\nPlayer: ${name || "Guest"}\nScore: ${score}\nMisses: ${misses}${extra}`
+  );
 }
 
 async function sendScoreToServer(username, score) {
@@ -132,7 +145,7 @@ if (startBtn) {
 }
 // Stop button functionality
 if (stopBtn) {
-  stopBtn.addEventListener("click", stopGame);
+  stopBtn.addEventListener("click", () => stopGame("stopped"));
 }
 
 // Handle key presses
