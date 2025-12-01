@@ -7,10 +7,10 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const isProd = !!process.env.DATABASE_URL;
+const isRender = !!process.env.DATABASE_URL;
 
 const pool = new Pool(
-    isProd
+    isRender
     ? {
         connectionString: process.env.DATABASE_URL,
         ssl: { rejectUnauthorized: false },
