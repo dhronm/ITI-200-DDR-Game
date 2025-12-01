@@ -69,7 +69,28 @@ function startGame() {
 function stopGame() {
   gameActive = false;
   clearInterval(spawnInterval);
-  alert(`Game Over!\nScore: ${score}\nMisses: ${misses}`);
+  
+  if (window.playerName && window.playerName.trim() !== "") {
+    saveScoreToLeaderboard(window.playerName, score);
+  } else {
+    alert("Score not saved because you are not signed in.");
+  }
+
+  alert(`Game Over!\nPlayer: ${window.playerName || "Guest"}\nScore: ${score}\nMisses: ${misses}`);
+}
+
+function saveScoreToLeaderboard(name, score){
+  if (!name) return;
+
+  let leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+  leaderboard.push({ name, score });
+
+  leaderboard.sort((a , b) => b.score - a.score);
+
+  leaderboard = leaderboard.slice(0, 10);
+
+  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
 }
 
 // Start button functionality
