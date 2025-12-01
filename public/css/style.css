@@ -53,3 +53,38 @@ body {
 #signin-btn:hover i {
   color: #bbb;          
 }
+
+.judgement {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.judgement-show {
+  opacity: 1;
+  transform: translate(-50%, -65%);
+}
+
+.judgement-perfect {
+  color: #7cff7c;
+}
+
+.judgement-great {
+  color: #7cb8ff;
+}
+
+.judgement-ok {
+  color: #fff075;
+}
+
+.judgement-miss {
+  color: #ff7c7c;
+}

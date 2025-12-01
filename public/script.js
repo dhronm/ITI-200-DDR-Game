@@ -12,6 +12,7 @@ let combo = 0;
 let misses = 0;
 let gameActive = false;
 let spawnInterval;
+let judgementTimeout;
 
 // DOM elements
 const scoreDisplay = document.getElementById("score");
@@ -20,6 +21,7 @@ const missDisplay = document.getElementById("misses");
 const startBtn = document.getElementById("startGameBtn");
 const lanes = document.querySelectorAll(".lane");
 const stopBtn = document.getElementById("stopGameBtn");
+const judgementEl = document.getElementById("judgement");
 
 // Function to spawn arrows
 function spawnArrow(lane) {
@@ -42,6 +44,8 @@ function spawnArrow(lane) {
         combo = 0;
         misses++;
         missDisplay.textContent = misses;
+
+        showJudgement(0, "MISS", "miss");
       }
     }
   }
@@ -102,6 +106,25 @@ async function sendScoreToServer(username, score) {
   }
 }
 
+function showJudgement(points, label, type) {
+  if (!judgementEl) return;
+
+  judgementEl.textContent = points > 0 ? `+${points} ${label}` : label;
+  judgementEl.className = "judgement";
+
+  if (type) {
+    judgementEl.classList.add(`judgement-${type}`);
+  }
+
+  void judgementEl.offsetWidth;
+  judgementEl.classList.add("judgement-show");
+
+  clearTimeout(judgementTimeout);
+  judgementTimout = setTimeout(() => {
+    judgementEl.classList.remove("judgement-show");
+  }, 400)
+}
+
 
 // Start button functionality
 if (startBtn) {
@@ -126,12 +149,15 @@ document.addEventListener("keydown", (e) => {
         if (accuracy < 10) {
           score += 300;
           combo++;
+          showJudgement(300, "PERFECT", "perfect");
         } else if (accuracy < 25) {
           score += 150;
           combo++;
+          showJudgement(150, "GREAT", "great");
         } else {
           score += 50;
           combo = 0;
+          showJudgement(50, "OK", "ok");
         }
         scoreDisplay.textContent = score;
         comboDisplay.textContent = combo;
