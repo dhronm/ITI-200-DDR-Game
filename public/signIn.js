@@ -23,7 +23,7 @@ popup.style = `
 
 popup.innerHTML = `
   <h3 style="margin-bottom:10px;">Sign In</h3>
-  <input id="popupInput" maxlength="8" placeholder="Username" 
+  <input id="popupInput" maxlength="16" placeholder="Username" 
          style="width:90%;padding:6px;border-radius:5px;border:none;text-align:center;">
   <br>
   <button id="popupSubmit" 
